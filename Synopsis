@@ -1,0 +1,41 @@
+Bus Pass System
+
+An aadhaar based software application which is used to buy and renew bus pass over the internet, 24hours throughout the day. Customers can register by verifying their details using their aadhaar card number and recharge through webcam scanned bar code/qr code through qr scanner system.
+Furthermore, customers do not need to pay cash to buy bus pass because they can pay for the bus pass by using Credit Card (e.g. Master Card, Visa Card) or e-wallet. Hence, there is a need of reformation of the system with more advantages and flexibility.
+Bus pass system, to put it simply, system can provide pass identification using bar code/QR code, Pass renewal, cancellation, updating, Student discount etc.
+Unique identification using bar code/qr codes on bus pass.
+Using this software we can check all details related Bus pass and instruction like how to renew pass how to update it, and also provide details of student discount.
+This software keeps all information of all Bus passes.
+Passengers first need to verify themselves the system using aadhaar enabled e-KYC. Once verified the system allows them to book passes for any route online.
+Users can recharge through webcam scanned bar code/qr code.
+
+Software Requirements:
+Windows Xp, Windows 7(ultimate, enterprise) 
+Sql Server 2012
+Visual studio 2012
+Tools Used :
+Python 3.4
+Aadhaar e-KYC API
+Bar Code/QR Code Genertor Library
+Bar Code/QR Code Scanner Library
+Python graphic library(tkinter,wxpython)
+Sql Server 2012
+Python SQL driver(pyodbc,pymssql)
+
+Hardware Components:\
+Processor – i3/dual core
+Hard Disk – 5 GB
+Memory – 1GB RAM
+
+
+Advantages :
+Verification of the passengers can be done online using aadhaar e-KYC. They have to first get themselves verified before registration.
+User can find all the bus pass related information online without going to the bus station.
+This online bus pass software system will help students and passengers get bus passes online and eliminate the need of standing in queues for passes or collecting a ticket for each journey.
+
+Further Aspects :
+Payment through secured gateways
+Ticket availability
+
+Real-life Application :
+This system can be used in any bus transport undertaking services. Using the system in government and private sectors can exclude the use of human efforts and saves lot of money and time.

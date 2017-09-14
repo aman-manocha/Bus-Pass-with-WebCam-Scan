@@ -1,40 +1,43 @@
-Bus Pass System
-
+INTRODUCTION
 A software application which is used to purchase tickets and buy/renew bus pass over the internet, 24hours throughout the day. Customers can register using manual/Google signup by verifying OTP sent on their mobile. Pass renewal can be done through webcam scanned QR code through QR scanner system.
-Furthermore, customers do not need to pay in cash to buy bus pass or tickets because they can pay for the bus pass through e-wallet. 
-Bus pass system, to put it simply, system can provide pass identification using bar code/QR code, Pass renewal, cancellation, updating, Student discount etc.
+Furthermore, customers do not need to pay in cash to buy bus pass or tickets because they can pay through various e-wallets. 
+Bus pass system, to put it simply, system can provide pass identification using bar code/QR code, pass renewal, cancellation, updating, ticket purchasing etc.
+	Registration using OTP verification.
+	Purchasing pass for any route online post verification.
 	Unique identification using QR codes on bus pass.
-	Using this software we can check all details related bus ticket/ pass and instruction like how to renew pass how to update it, and also provide details of student discount.
-	Passengers first need register using OTP verification. Once verified the system allows them to book passes for any route online.
-	Users can renew through webcam scanned QR code.
+	Pass renewal through webcam scanned QR code.
+	Ticket purchasing
 
-Advantages:
-	Verification of the passengers can be done online using OTP. They have to first get their mobile number verified before registration.
+Advantages
+	Verification of the passengers can be done online using OTP. Though they have to first get their mobile number verified before registration.
 	User can find all the bus pass related information online without going to the bus station.
 	This online bus pass software system will help students and passengers get bus passes online and eliminate the need of standing in queues for passes or collecting a ticket for each journey.
 
-Scope :
+Scope
 This system can be used in any bus transport undertaking services. Using the system in government and private sectors, it can exclude the use of human efforts and saves lot of money and time.
 
-Further Aspects :
-	Payment through secured gateways	
-	Ticket availability
+Further aspects
+	Payment through secured gateways can be implemented in future.
+	Ticket availability can also be implemented.
+ 
+IMPLEMENTATION
+Hardware components
+	Processor – Core i3
+	Hard Disk – 500 MB
+	Memory – 1GB
+	Webcam
 
-
-Software Requirements:
-Windows Xp, Windows 7(ultimate, enterprise) 
-Sql Server 2012
-Visual studio 2012
-Tools Used :
-Python 3.4
-Aadhaar e-KYC API
-Bar Code/QR Code Genertor Library
-Bar Code/QR Code Scanner Library
-Python graphic library(tkinter,wxpython)
-Sql Server 2012
-Python SQL driver(pyodbc,pymssql)
-
-Hardware Components:\
-Processor – i3/dual core
-Hard Disk – 5 GB
-Memory – 1GB RAM
+Software requirements
+	Windows 7 or higher 
+	Sql Server 2012
+	Visual studio 2012
+ 
+Tools used
+	Python 3.4
+	Google signup API
+	QR code generator library
+	QR code scanner library
+	Python graphic library(pyQt)
+	Sql Server 2012
+	Python SQL driver(pyodbc, pymssql)
+	SMS gateway

@@ -6,7 +6,7 @@ class Window(QtGui.QMainWindow):
         super(Window, self).__init__()
         self.setGeometry(10,30,1300,700)
         self.setWindowTitle("Bus Pass System")
-        self.setWindowIcon(QtGui.QIcon())
+        self.setWindowIcon(QtGui.QIcon('bus_icon.png'))
         self.show()
 
 app = QtGui.QApplication(sys.argv)

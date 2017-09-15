@@ -1,9 +1,15 @@
 import sys
 from PyQt4 import QtGui
 
-app =  QtGui.QApplication(sys.argv)
+class Window(QtGui.QMainWindow):
+    def __init__(self):
+        super(Window, self).__init__()
+        self.setGeometry(10,30,1300,700)
+        self.setWindowTitle("Bus Pass System")
+        self.setWindowIcon(QtGui.QIcon())
+        self.show()
 
-window = QtGui.QWidget()
-window.setGeometry(10,20,1300,700)
-window.setWindowTitle("Bus Pass System")
-window.show()
+app = QtGui.QApplication(sys.argv)
+
+GUI = Window()
+sys.exit(app.exec_())

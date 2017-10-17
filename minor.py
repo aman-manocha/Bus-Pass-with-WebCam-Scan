@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-
+from signup import Ui_MainWindow
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -23,6 +23,15 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_BUSPASSSYSTEM(object):
+    def openwindow(self):
+        self.window=QtGui.QMainWindow()
+        self.ui=Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+    def logincheck(self):
+        print("login button clicked!")
+    def signupcheck(self):
+        print("signup button clicked!")
     def setupUi(self, BUSPASSSYSTEM):
         BUSPASSSYSTEM.setObjectName(_fromUtf8("BUSPASSSYSTEM"))
         BUSPASSSYSTEM.resize(676, 554)
@@ -33,14 +42,17 @@ class Ui_BUSPASSSYSTEM(object):
         BUSPASSSYSTEM.setFont(font)
         self.centralwidget = QtGui.QWidget(BUSPASSSYSTEM)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.label = QtGui.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(290, 200, 151, 51))
-        self.label.setObjectName(_fromUtf8("label"))
-        self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(290, 330, 101, 28))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.alredy_label = QtGui.QLabel(self.centralwidget)
+        self.alredy_label.setGeometry(QtCore.QRect(290, 200, 151, 51))
+        self.alredy_label.setObjectName(_fromUtf8("alredy_label"))
+        self.loginbtn = QtGui.QPushButton(self.centralwidget)
+        self.loginbtn.setGeometry(QtCore.QRect(290, 330, 101, 28))
+        self.loginbtn.setObjectName(_fromUtf8("loginbtn"))
+        #######################button event#######################
+        self.loginbtn.clicked.connect(self.logincheck)
+        ###########################################################
         self.label_2 = QtGui.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(50, 0, 671, 151))
+        self.label_2.setGeometry(QtCore.QRect(50, 30, 671, 151))
         font = QtGui.QFont()
         font.setPointSize(36)
         font.setBold(True)
@@ -48,34 +60,41 @@ class Ui_BUSPASSSYSTEM(object):
         self.label_2.setFont(font)
         self.label_2.setAutoFillBackground(False)
         self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.label_3 = QtGui.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(230, 250, 91, 31))
+        self.name_label = QtGui.QLabel(self.centralwidget)
+        self.name_label.setGeometry(QtCore.QRect(230, 250, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName(_fromUtf8("label_3"))
-        self.lineEdit = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(290, 250, 121, 22))
-        self.lineEdit.setText(_fromUtf8(""))
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.label_4 = QtGui.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(180, 290, 121, 20))
+        self.name_label.setFont(font)
+        self.name_label.setObjectName(_fromUtf8("name_label"))
+        self.name_lineEdit = QtGui.QLineEdit(self.centralwidget)
+        self.name_lineEdit.setGeometry(QtCore.QRect(290, 250, 121, 22))
+        self.name_lineEdit.setText(_fromUtf8(""))
+        self.name_lineEdit.setObjectName(_fromUtf8("name_lineEdit"))
+        self.psw_label = QtGui.QLabel(self.centralwidget)
+        self.psw_label.setGeometry(QtCore.QRect(180, 290, 121, 20))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName(_fromUtf8("label_4"))
-        self.lineEdit_2 = QtGui.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(290, 290, 121, 22))
-        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
-        self.label_5 = QtGui.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(280, 390, 231, 31))
-        self.label_5.setObjectName(_fromUtf8("label_5"))
-        self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(290, 430, 101, 28))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(410, 330, 93, 28))
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
+        self.psw_label.setFont(font)
+        self.psw_label.setObjectName(_fromUtf8("psw_label"))
+        self.psw_lineEdit = QtGui.QLineEdit(self.centralwidget)
+        self.psw_lineEdit.setGeometry(QtCore.QRect(290, 290, 121, 22))
+        self.psw_lineEdit.setObjectName(_fromUtf8("psw_lineEdit"))
+        self.dnthv_label = QtGui.QLabel(self.centralwidget)
+        self.dnthv_label.setGeometry(QtCore.QRect(280, 390, 231, 31))
+        self.dnthv_label.setObjectName(_fromUtf8("dnthv_label"))
+        self.signupbtn = QtGui.QPushButton(self.centralwidget)
+        self.signupbtn.setGeometry(QtCore.QRect(290, 430, 101, 28))
+        self.signupbtn.setObjectName(_fromUtf8("signupbtn"))
+        #######################button event#######################
+        self.signupbtn.clicked.connect(self.openwindow)
+        self.signupbtn.clicked.connect(self.signupcheck)
+        ###########################################################
+        self.cancelbtn = QtGui.QPushButton(self.centralwidget)
+        self.cancelbtn.setGeometry(QtCore.QRect(410, 330, 93, 28))
+        self.cancelbtn.setObjectName(_fromUtf8("cancelbtn"))
+        self.gsignupbtn = QtGui.QPushButton(self.centralwidget)
+        self.gsignupbtn.setGeometry(QtCore.QRect(410, 430, 101, 28))
+        self.gsignupbtn.setObjectName(_fromUtf8("gsignupbtn"))
         BUSPASSSYSTEM.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(BUSPASSSYSTEM)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -86,14 +105,15 @@ class Ui_BUSPASSSYSTEM(object):
 
     def retranslateUi(self, BUSPASSSYSTEM):
         BUSPASSSYSTEM.setWindowTitle(_translate("BUSPASSSYSTEM", "MainWindow", None))
-        self.label.setText(_translate("BUSPASSSYSTEM", "already a member? ", None))
-        self.pushButton.setText(_translate("BUSPASSSYSTEM", "login", None))
-        self.label_2.setText(_translate("BUSPASSSYSTEM", "BUS PASS SYSTEM", None))
-        self.label_3.setText(_translate("BUSPASSSYSTEM", "NAME", None))
-        self.label_4.setText(_translate("BUSPASSSYSTEM", "PASSWORD", None))
-        self.label_5.setText(_translate("BUSPASSSYSTEM", "Don\'t have an account?", None))
-        self.pushButton_2.setText(_translate("BUSPASSSYSTEM", "Sign up", None))
-        self.pushButton_3.setText(_translate("BUSPASSSYSTEM", "Cancel", None))
+        self.alredy_label.setText(_translate("BUSPASSSYSTEM", "already a member? ", None))
+        self.loginbtn.setText(_translate("BUSPASSSYSTEM", "login", None))
+        self.label_2.setText(_translate("BUSPASSSYSTEM", "<html><head/><body><p><span style=\" color:#00aaff;\">BUS PASS SYSTEM</span></p></body></html>", None))
+        self.name_label.setText(_translate("BUSPASSSYSTEM", "NAME", None))
+        self.psw_label.setText(_translate("BUSPASSSYSTEM", "PASSWORD", None))
+        self.dnthv_label.setText(_translate("BUSPASSSYSTEM", "Don\'t have an account?", None))
+        self.signupbtn.setText(_translate("BUSPASSSYSTEM", "Sign up", None))
+        self.cancelbtn.setText(_translate("BUSPASSSYSTEM", "Cancel", None))
+        self.gsignupbtn.setText(_translate("BUSPASSSYSTEM", "google signup", None))
 
 
 if __name__ == "__main__":

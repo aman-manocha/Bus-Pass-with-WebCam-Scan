@@ -63,6 +63,11 @@ class Ui_BUSPASSSYSTEM(object):
         self.name_label.setObjectName(_fromUtf8("name_label"))
         self.name_lineEdit = QtGui.QLineEdit(self.centralwidget)
         self.name_lineEdit.setGeometry(QtCore.QRect(470, 320, 121, 22))
+        ########## NAME VALIDATION######################
+        regex=QtCore.QRegExp("[a-z-A-Z_]+")
+        validator = QtGui.QRegExpValidator(regex)
+        self.name_lineEdit.setValidator(validator)
+        ####################################
         self.name_lineEdit.setText(_fromUtf8(""))
         self.name_lineEdit.setObjectName(_fromUtf8("name_lineEdit"))
         self.psw_label = QtGui.QLabel(self.centralwidget)

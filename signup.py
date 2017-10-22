@@ -48,9 +48,23 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.firstname = QtGui.QLineEdit(self.centralwidget)
         self.firstname.setGeometry(QtCore.QRect(600, 150, 113, 22))
+        ##########################valid########
+        
+        regex=QtCore.QRegExp("[a-z-A-Z_]+")
+        validator = QtGui.QRegExpValidator(regex)
+        self.firstname.setValidator(validator)
+        
+        #####################################
         self.firstname.setObjectName(_fromUtf8("firstname"))
         self.mobile = QtGui.QLineEdit(self.centralwidget)
         self.mobile.setGeometry(QtCore.QRect(600, 380, 141, 21))
+        #########################################
+        
+        regex=QtCore.QRegExp("[0-9]+")
+        validator = QtGui.QRegExpValidator(regex)
+        self.mobile.setValidator(validator)
+        
+        ############################################### 
         self.mobile.setObjectName(_fromUtf8("mobile"))
         self.emailid = QtGui.QLineEdit(self.centralwidget)
         self.emailid.setGeometry(QtCore.QRect(600, 410, 181, 22))
@@ -85,6 +99,12 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.lastname = QtGui.QLineEdit(self.centralwidget)
         self.lastname.setGeometry(QtCore.QRect(600, 180, 113, 22))
+        ##############################################
+        regex=QtCore.QRegExp("[a-z-A-Z_]+")
+        validator = QtGui.QRegExpValidator(regex)
+        self.lastname.setValidator(validator)
+        
+        ############################################
         self.lastname.setObjectName(_fromUtf8("lastname"))
         self.male_radioButton = QtGui.QRadioButton(self.centralwidget)
         self.male_radioButton.setGeometry(QtCore.QRect(600, 220, 95, 20))

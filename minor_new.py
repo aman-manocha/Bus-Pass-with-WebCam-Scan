@@ -112,7 +112,7 @@ class Ui_BUSPASSSYSTEM(QtGui.QDialog):
         self.label = QtGui.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 230, 241, 231))
         self.label.setText(_fromUtf8(""))
-        self.label.setPixmap(QtGui.QPixmap(_fromUtf8("../../../../Users/sanya/Desktop/Bus-Pass-with-WebCam-Scan-aman-manocha-patch-1/bus_icon.png")))
+        self.label.setPixmap(QtGui.QPixmap(_fromUtf8("bus_icon.png")))
         self.label.setObjectName(_fromUtf8("label"))
         self.pushButton = QtGui.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(480, 540, 111, 28))

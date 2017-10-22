@@ -139,6 +139,13 @@ class Ui_MainWindow(object):
         self.adhar = QtGui.QLineEdit(self.centralwidget)
         self.adhar.setGeometry(QtCore.QRect(600, 350, 141, 22))
         self.adhar.setObjectName(_fromUtf8("adhar"))
+        #########################################
+        
+        regex=QtCore.QRegExp("[0-9]+")
+        validator = QtGui.QRegExpValidator(regex)
+        self.adhar.setValidator(validator)
+        
+        ###############################################
         self.date_comboBox_2 = QtGui.QComboBox(self.centralwidget)
         self.date_comboBox_2.setGeometry(QtCore.QRect(600, 260, 41, 22))
         self.date_comboBox_2.setObjectName(_fromUtf8("date_comboBox_2"))

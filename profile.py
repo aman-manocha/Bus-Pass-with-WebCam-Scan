@@ -8,6 +8,7 @@
 
 from PyQt4 import QtCore, QtGui
 from editdetail import Ui_editdetails
+from minor_new import Ui_BUSPASSSYSTEM
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -25,9 +26,14 @@ except AttributeError:
 
 class Ui_MainWindow(object):
 
-    def close(self):
-         import sys
-         sys.exit(0)
+
+
+    def openminor(self):
+        self.BUSPASSSYSTEM=QtGui.QMainWindow()
+        self.ui=Ui_BUSPASSSYSTEM()
+        self.ui.setupUi(self.BUSPASSSYSTEM)
+        self.BUSPASSSYSTEM.show()
+         
          
     def openwindow(self):
         self.editdetails=QtGui.QMainWindow()
@@ -134,7 +140,7 @@ class Ui_MainWindow(object):
         self.logout_btn = QtGui.QPushButton(self.detailstab)
         ###############################################
 
-        self.logout_btn.clicked.connect(self.close)
+        self.logout_btn.clicked.connect(self.openminor)
 
         ###################################################
         self.logout_btn.setGeometry(QtCore.QRect(240, 350, 81, 31))

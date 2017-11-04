@@ -293,7 +293,7 @@ class Ui_MainWindow(object):
         self.label_3 = QtGui.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(40, 190, 231, 271))
         self.label_3.setText(_fromUtf8(""))
-        self.label_3.setPixmap(QtGui.QPixmap(_fromUtf8("Bus-Pass-with-WebCam-Scan-aman-manocha-patch-1/bus_icon.png")))
+        self.label_3.setPixmap(QtGui.QPixmap(_fromUtf8("bus_icon.png")))
         self.label_3.setObjectName(_fromUtf8("label_3"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(MainWindow)

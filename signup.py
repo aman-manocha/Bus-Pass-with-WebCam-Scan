@@ -24,6 +24,9 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+num = randrange(1002, 9997)
+otp = str(otp)
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -396,7 +399,7 @@ class Ui_MainWindow(object):
     def Add_btn(self):
         ph = self.mobile.text()
         query=way2sms.sms('8802302324','amanaman')
-        query.send(ph,'Your OTP for Bus Pass System is : ' + num)
+        query.send(ph,'Your OTP for Bus Pass System is : ' + otp)
         query.logout()
 
 if __name__ == "__main__":

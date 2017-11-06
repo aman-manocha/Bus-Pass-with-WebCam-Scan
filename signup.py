@@ -7,6 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from random import randrange
+import way2sms
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -86,6 +88,9 @@ class Ui_MainWindow(object):
         self.pushButton = QtGui.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(600, 500, 93, 28))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        ##########################################
+        self.pushButton.clicked.connect(self.Add_btn)
+        ##########################################
         self.label_pic = QtGui.QLabel(self.centralwidget)
         self.label_pic.setGeometry(QtCore.QRect(70, 160, 241, 231))
         self.label_pic.setText(_fromUtf8(""))
@@ -387,7 +392,12 @@ class Ui_MainWindow(object):
         self.year_comboBox_4.setItemText(48, _translate("MainWindow", "1998", None))
         self.year_comboBox_4.setItemText(49, _translate("MainWindow", "1999", None))
         self.label_12.setText(_translate("MainWindow", "Aadhar no.", None))
-
+        
+    def Add_btn(self):
+        ph = self.mobile.text()
+        query=way2sms.sms('8802302324','amanaman')
+        query.send(ph,'Your OTP for Bus Pass System is : ' + num)
+        query.logout()
 
 if __name__ == "__main__":
     import sys

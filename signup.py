@@ -25,7 +25,7 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 num = randrange(1002, 9997)
-otp = str(otp)
+otp = str(num)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

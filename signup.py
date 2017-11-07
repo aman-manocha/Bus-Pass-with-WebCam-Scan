@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'signup.ui'
@@ -5,8 +6,11 @@
 # Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
-
+import json
+import DB_manager as db
+import sys
 from PyQt4 import QtCore, QtGui
+from otp import Ui_OTPWindow
 from random import randrange
 import way2sms
 
@@ -27,7 +31,14 @@ except AttributeError:
 num = randrange(1002, 9997)
 otp = str(num)
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtGui.QMainWindow):
+    def __init__(self):
+        QtGui.QDialog.__init__(self)
+        self.dbu = db.DatabaseUtility('buspass', 'information')
+        self.setupUi(self)
+        #self.dbu = dbu 
+        self.confirm = None
+        
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(989, 619)
@@ -45,6 +56,11 @@ class Ui_MainWindow(object):
         self.label_2 = QtGui.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(470, 150, 71, 20))
         self.label_2.setObjectName(_fromUtf8("label_2"))
+
+        self.label_22 = QtGui.QLabel(self.centralwidget)
+        self.label_22.setGeometry(QtCore.QRect(470, 500, 71, 20))
+        self.label_22.setObjectName(_fromUtf8("label_22"))
+        
         self.label_3 = QtGui.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(470, 290, 53, 16))
         self.label_3.setObjectName(_fromUtf8("label_3"))
@@ -74,6 +90,11 @@ class Ui_MainWindow(object):
         self.emailid = QtGui.QLineEdit(self.centralwidget)
         self.emailid.setGeometry(QtCore.QRect(600, 410, 181, 22))
         self.emailid.setObjectName(_fromUtf8("emailid"))
+
+        self.otpp = QtGui.QLineEdit(self.centralwidget)
+        self.otpp.setGeometry(QtCore.QRect(600, 500, 100, 22))
+        self.otpp.setObjectName(_fromUtf8("otpp"))
+        
         self.label_5 = QtGui.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(470, 440, 71, 16))
         self.label_5.setObjectName(_fromUtf8("label_5"))
@@ -89,15 +110,24 @@ class Ui_MainWindow(object):
         self.cnfrmpsw.setEchoMode(QtGui.QLineEdit.Password)
         self.cnfrmpsw.setObjectName(_fromUtf8("cnfrmpsw"))
         self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(600, 500, 93, 28))
+        self.pushButton.setGeometry(QtCore.QRect(600, 540, 93, 28))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        
         ##########################################
         self.pushButton.clicked.connect(self.Add_btn)
         ##########################################
+
+        self.SendOtp = QtGui.QPushButton(self.centralwidget)
+        self.SendOtp.setGeometry(QtCore.QRect(760, 375, 93, 28))
+        self.SendOtp.setObjectName(_fromUtf8("SendOtp"))
+        ##########################################
+        self.SendOtp.clicked.connect(self.SendMessage)
+        ##########################################
+        
         self.label_pic = QtGui.QLabel(self.centralwidget)
         self.label_pic.setGeometry(QtCore.QRect(70, 160, 241, 231))
         self.label_pic.setText(_fromUtf8(""))
-        self.label_pic.setPixmap(QtGui.QPixmap(_fromUtf8("../../../../Users/sanya/Desktop/Bus-Pass-with-WebCam-Scan-aman-manocha-patch-1/bus_icon.png")))
+        self.label_pic.setPixmap(QtGui.QPixmap(_fromUtf8("bus_icon.png")))
         self.label_pic.setObjectName(_fromUtf8("label_pic"))
         self.label_7 = QtGui.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(470, 320, 53, 16))
@@ -278,11 +308,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.label.setText(_translate("MainWindow", "SIGNUP PORTAL", None))
         self.label_2.setText(_translate("MainWindow", "First Name", None))
+        self.label_22.setText(_translate("MainWindow", "otpp", None))
         self.label_3.setText(_translate("MainWindow", "Address", None))
         self.label_4.setText(_translate("MainWindow", "Mobile", None))
         self.label_5.setText(_translate("MainWindow", "Password", None))
         self.label_6.setText(_translate("MainWindow", "Confirm password", None))
         self.pushButton.setText(_translate("MainWindow", "Submit", None))
+        self.SendOtp.setText(_translate("MainWindow", "Send OTP", None))
         self.label_7.setText(_translate("MainWindow", "District", None))
         self.label_8.setText(_translate("MainWindow", "Last Name", None))
         self.male_radioButton.setText(_translate("MainWindow", "Male", None))
@@ -395,12 +427,62 @@ class Ui_MainWindow(object):
         self.year_comboBox_4.setItemText(48, _translate("MainWindow", "1998", None))
         self.year_comboBox_4.setItemText(49, _translate("MainWindow", "1999", None))
         self.label_12.setText(_translate("MainWindow", "Aadhar no.", None))
+    
+
+    def SendMessage(self):
+        Ph = self.mobile.text()
+        query=way2sms.sms('8802302324','amanaman')
+        query.send(Ph,'Your OTP for Bus Pass System is : ' + otp)
+        query.logout()
         
     def Add_btn(self):
-        ph = self.mobile.text()
-        query=way2sms.sms('8802302324','amanaman')
-        query.send(ph,'Your OTP for Bus Pass System is : ' + otp)
-        query.logout()
+        Na = self.firstname.text()
+        Eid = self.emailid.text()
+        #DOB = self..text()
+        #Sex = self..text()
+        Ph = self.mobile.text()
+        Ad = self.address.text()
+        Ah = self.adhar.text()
+        Pas = self.psw.text()
+        Cpas = self.cnfrmpsw.text()
+        ot = self.otpp.text()
+        data={'Na':Na, 'Ad':Ad, 'Ah':Ah, 'Eid':Eid}
+        with open('user.json','w') as file:
+            json.dump(data,file,indent=2)
+        if not Eid:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'EMAIL is Missing')
+        elif not Na:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'NAME is Missing')
+        elif not Pas:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'Passwrd is Missing')
+        #elif not Sex:
+            #QtGui.QMessageBox.warning(self, 'Dang it!', 'Somthing is Missing')
+        elif not Ph:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'MOBILE is Missing')
+        elif not Ad:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'ADDRESS is Missing')
+        elif not Ah:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'AADHAR is Missing')
+        elif Pas != Cpas:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'Passwords Do Not Match')
+        elif not ot:
+            QtGui.QMessageBox.warning(self, 'Dang it!', 'OTP is Missing')
+        else:
+            t = self.dbu.GetTable()
+            print (t)
+            for col in t:
+                if Eid == col[2]:
+                    QtGui.QMessageBox.warning(self, 'Dang it!', 'Account Already Exist')
+                
+            if(otp==ot):
+                self.dbu.AddEntryToTable (Na, Eid, Pas, Ph, Ad, Ah)
+                QtGui.QMessageBox.information(self, 'Awesome!!', 'User Added SUCCESSFULLY!')
+                self.close()
+            else:
+                QtGui.QMessageBox.warning(self, 'Invalid', 'Incorrect OTP!!!')
+                
+        
+        
 
 if __name__ == "__main__":
     import sys

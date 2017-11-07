@@ -22,7 +22,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(object):
+class Ui_OTPWindow(QtGui.QDialog):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(407, 270)
@@ -31,12 +31,17 @@ class Ui_MainWindow(object):
         self.label = QtGui.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(22, 60, 121, 20))
         self.label.setObjectName(_fromUtf8("label"))
+        
         self.lineEdit = QtGui.QLineEdit(self.centralwidget)
         self.lineEdit.setGeometry(QtCore.QRect(130, 60, 113, 22))
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
+
         self.pushButton = QtGui.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(60, 130, 93, 28))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        ##########################################
+        self.pushButton.clicked.connect(self.Confirm)
+        ##########################################
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(190, 130, 93, 28))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
@@ -58,12 +63,20 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "confirm", None))
         self.pushButton_2.setText(_translate("MainWindow", "cancel", None))
 
+    @QtCore.pyqtSignature("on_pushButton_clicked()")
+    def Confirm(self):
+        passwrd = self.lineEdit.text()
+        if(passwrd=='6446'):
+            QtGui.QMessageBox.information(self, 'Got it!!!', 'Nice')
+            self.close()
+        else:
+            QtGui.QMessageBox.warning(self, 'Wrongg!!!', 'NO')
 
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_OTPWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

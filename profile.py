@@ -5,10 +5,12 @@
 # Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
-
+import DB_manager as db
+import json
+import sys
 from PyQt4 import QtCore, QtGui
 from editdetail import Ui_editdetails
-from minor_new import Ui_BUSPASSSYSTEM
+#from minor_new import Ui_BUSPASSSYSTEM
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -24,11 +26,19 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(object):
+class Ui_profileWindow(QtGui.QMainWindow):
+    def __init__(self):
+        QtGui.QDialog.__init__(self)
+        self.dbu = db.DatabaseUtility('buspass', 'information')
+        self.setupUi(self)
+        #self.dbu = dbu 
+        self.confirm = None
 
 
 
     def openminor(self):
+        #app = QtGui.QApplication(sys.argv)
+        sys.exit(app.exec_())
         self.BUSPASSSYSTEM=QtGui.QMainWindow()
         self.ui=Ui_BUSPASSSYSTEM()
         self.ui.setupUi(self.BUSPASSSYSTEM)
@@ -261,12 +271,18 @@ class Ui_MainWindow(object):
         self.enternewpsw.setObjectName(_fromUtf8("enternewpsw"))
         self.oldpsw = QtGui.QLineEdit(self.logout_tab)
         self.oldpsw.setGeometry(QtCore.QRect(300, 130, 113, 21))
+        
+        self.oldpsw.setEchoMode(QtGui.QLineEdit.Password)
+        
         self.oldpsw.setObjectName(_fromUtf8("oldpsw"))
         self.newpsw = QtGui.QLineEdit(self.logout_tab)
         self.newpsw.setGeometry(QtCore.QRect(300, 160, 113, 22))
+
+        self.newpsw.setEchoMode(QtGui.QLineEdit.Password)
         self.newpsw.setObjectName(_fromUtf8("newpsw"))
         self.updatepsw = QtGui.QPushButton(self.logout_tab)
         self.updatepsw.setGeometry(QtCore.QRect(190, 280, 131, 28))
+        
         self.updatepsw.setObjectName(_fromUtf8("updatepsw"))
         self.enter = QtGui.QLabel(self.logout_tab)
         self.enter.setGeometry(QtCore.QRect(140, 40, 201, 31))
@@ -282,6 +298,7 @@ class Ui_MainWindow(object):
         self.entercnfrmpsw.setObjectName(_fromUtf8("entercnfrmpsw"))
         self.confirmpsw = QtGui.QLineEdit(self.logout_tab)
         self.confirmpsw.setGeometry(QtCore.QRect(300, 200, 113, 22))
+        self.confirmpsw.setEchoMode(QtGui.QLineEdit.Password)
         self.confirmpsw.setObjectName(_fromUtf8("confirmpsw"))
         self.tabWidget.addTab(self.logout_tab, _fromUtf8(""))
         self.aboutustab = QtGui.QWidget()
@@ -295,6 +312,13 @@ class Ui_MainWindow(object):
         self.label_3.setText(_fromUtf8(""))
         self.label_3.setPixmap(QtGui.QPixmap(_fromUtf8("bus_icon.png")))
         self.label_3.setObjectName(_fromUtf8("label_3"))
+
+        self.label_4 = QtGui.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(830, 250, 150, 150))
+        self.label_4.setText(_fromUtf8(""))
+        self.label_4.setPixmap(QtGui.QPixmap(_fromUtf8("myqr.png")))
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -305,20 +329,22 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
+        with open('user.json','r') as file:
+            data=json.load(file)
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.entername.setText(_translate("MainWindow", " Name", None))
-        self.fname.setText(_translate("MainWindow", "TextLabel", None))
+        self.fname.setText(_translate("MainWindow",data['Na'] , None))
         self.entergen.setText(_translate("MainWindow", "Gender", None))
         self.enterdob.setText(_translate("MainWindow", "D.O.B", None))
         self.enteradd.setText(_translate("MainWindow", "Address", None))
         self.enteradhar.setText(_translate("MainWindow", "Aadhar no.", None))
-        self.entermobile.setText(_translate("MainWindow", "Mobile no.", None))
-        self.lname.setText(_translate("MainWindow", "TextLabel", None))
-        self.gender.setText(_translate("MainWindow", "TextLabel", None))
-        self.dob.setText(_translate("MainWindow", "TextLabel", None))
-        self.add.setText(_translate("MainWindow", "TextLabel", None))
-        self.adhar.setText(_translate("MainWindow", "TextLabel", None))
-        self.mobile.setText(_translate("MainWindow", "TextLabel", None))
+        self.entermobile.setText(_translate("MainWindow", "", None))
+        self.lname.setText(_translate("MainWindow", "", None))
+        self.gender.setText(_translate("MainWindow", "Male", None))
+        self.dob.setText(_translate("MainWindow", "1-1-1990", None))
+        self.add.setText(_translate("MainWindow", data['Ad'], None))
+        self.adhar.setText(_translate("MainWindow", data['Ah'], None))
+        self.mobile.setText(_translate("MainWindow", "", None))
         self.label.setText(_translate("MainWindow", "WELCOME USER", None))
         self.logout_btn.setText(_translate("MainWindow", "LOGOUT", None))
         self.editdetails_btn.setText(_translate("MainWindow", "EDIT DETAILS", None))
@@ -340,7 +366,7 @@ class Ui_MainWindow(object):
         self.tobox.setItemText(5, _translate("MainWindow", "SUBHASH NAGAR", None))
         self.tobox.setItemText(6, _translate("MainWindow", "CP", None))
         self.entertotal.setText(_translate("MainWindow", "TOTAL FARE", None))
-        self.totalfare.setText(_translate("MainWindow", "TextLabel", None))
+        self.totalfare.setText(_translate("MainWindow", "Rs. 0", None))
         self.buyticketbtn.setText(_translate("MainWindow", "Buy Ticket", None))
         self.label_2.setText(_translate("MainWindow", "BUY TICKET", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.buyticket_tab), _translate("MainWindow", "BUY TICKET", None))
@@ -369,10 +395,10 @@ class Ui_MainWindow(object):
 
 
 if __name__ == "__main__":
-    import sys
+    #import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_profileWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
